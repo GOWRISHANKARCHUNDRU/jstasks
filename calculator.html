@@ -1,0 +1,94 @@
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+      
+
+    }
+    .main-outer{
+        border: 2px solid black;
+        height: 550px;
+        width: 295px;
+        border-radius: 20px;
+       margin: 80px 350px 80px 350px;
+       background-color: #303843;
+
+    }
+    input[type=text]{
+    margin-top: 57px;
+    height: 150px;
+    margin-left: 30px;
+    background-color:#303843 ;
+    color: white;
+    font-size: larger;
+    margin-bottom: 0px;
+    text-align: right;
+    border: none;
+    }
+    input[type=button]{
+        display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-left: 10px;
+     font-size: larger;
+    background-color: #28303B;
+    color: white;
+    }
+</style>
+
+<div class="main-outer">
+    <input type="text">
+    <input type="button" value="ON" onclick="on()">
+    <input type="button" value="AC" onclick="clearResult()">
+    <input type="button" value="%"  onclick="fn(event)">
+    <input type="button" value="/"  onclick="fn(event)">
+    <input type="button" value="9"  onclick="fn(event)">
+    <input type="button" value="8"  onclick="fn(event)">
+    <input type="button" value="7"  onclick="fn(event)">
+    <input type="button" value="*"  onclick="fn(event)">
+    <input type="button" value="6"  onclick="fn(event)">
+    <input type="button" value="5"  onclick="fn(event)">
+    <input type="button" value="4"  onclick="fn(event)">
+    <input type="button" value="-"  onclick="fn(event)">
+    <input type="button" value="3"  onclick="fn(event)">
+    <input type="button" value="2"  onclick="fn(event)">
+    <input type="button" value="1" onclick="fn(event)">
+    <input type="button" value="+"  onclick="fn(event)">
+    <input type="button" value="0"  onclick="fn(event)">
+    <input type="button" value="."  onclick="fn(event)">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="C"  onclick="clearresult()">
+
+</div>
+<script>
+    function on(){
+        var clickedValue=document.querySelector("input[type=text]").value=0;
+    }
+    function fn(eve){
+        console.log(event.target.value)
+        var clickedValue = event.target.value;
+    var currentInput = document.querySelector("input[type=text]").value;
+    document.querySelector("input[type=text]").value = currentInput + clickedValue;
+
+    }
+    function clearResult() {
+            document.querySelector("input[type=text]").value = "";
+        }
+        function clearresult() {
+            var currentInput = document.querySelector("input[type=text]").value;
+            var newInput = currentInput.slice(0, -1); // Remove the last character
+            document.querySelector("input[type=text]").value = newInput;
+        }
+        function calculate() {
+            var expression = document.querySelector("input[type=text]").value;
+            var result;
+            try {
+                result = eval(expression);
+                document.querySelector("input[type=text]").value = result;
+            } catch (error) {
+                document.querySelector("input[type=text]").value = "Error";
+            }
+        }
+</script>
